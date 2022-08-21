@@ -12,8 +12,6 @@ const updateLSData = () => {
   localStorage.setItem("notes", JSON.stringify(notes));
 };
 
-// <!-- SUbSCRIBE THAPA TECHNICAL YOUTUBE CHANNEL https://www.youtube.com/thapatechnical -->
-
 const addNewNote = (text = "") => {
   const note = document.createElement("div");
   note.classList.add("note");
@@ -28,21 +26,19 @@ const addNewNote = (text = "") => {
     <textarea class="${text ? "hidden" : ""}"></textarea>  `;
 
   note.insertAdjacentHTML("afterbegin", htmlData);
-  // console.log(note);
 
-  // getting the References
   const editButton = note.querySelector(".edit");
   const delButton = note.querySelector(".delete");
   const mainDiv = note.querySelector(".main");
   const textArea = note.querySelector("textarea");
 
-  // deleting the node
+
   delButton.addEventListener("click", () => {
     note.remove();
     updateLSData();
   });
 
-  // toggle using edit button
+
   textArea.value = text;
   mainDiv.innerHTML = text;
 
@@ -59,10 +55,10 @@ const addNewNote = (text = "") => {
   });
 
   document.body.appendChild(note);
-  // it appeds a node as the last child of  a node
+
 };
 
-// getting data back from localStorage
+
 const notes = JSON.parse(localStorage.getItem("notes"));
 
 if (notes) {

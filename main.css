@@ -1,203 +1,245 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap");
-
-* {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: none;
+  font-family: 'Poppins', sans-serif;
 }
-
-body {
-  background-color: #f4f7f8;
-  font-family: "Poppins", sans-serif;
+body{
+  background: #88ABFF;
+}
+::selection{
+  color: #fff;
+  background: #618cf8;
+}
+.wrapper{
+  margin: 50px;
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(auto-fill, 265px);
+}
+.wrapper li{
+  height: 250px;
+  list-style: none;
+  border-radius: 5px;
+  padding: 15px 20px 20px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+.add-box, .icon, .bottom-content, 
+.popup, header, .settings .menu li{
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
-
-.heading {
-  width: 100vw;
-  height: 5.5rem;
-  background-color: #0fadf1;
-  color: #ffffff;
-  box-shadow: 0px 10px 16px rgb(248, 247, 247);
-}
-
-.heading h1 {
-  line-height: 5.8rem;
-  margin-left: 2rem;
-  font-weight: 400;
-}
-
-.add:active {
-  transform: scale(0.98);
-}
-
-/* button style start  */
-
-.btn-div {
-  position: fixed;
-  top: 6rem;
-  right: 1rem;
-  border: hidden;
-  border-radius: 10px;
-  padding: 1rem 3rem;
+.add-box{
   cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
 }
-button {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  outline: none;
-  border: hidden;
-  vertical-align: middle;
-  text-decoration: none;
-  background: transparent;
-  padding: 0;
-  font-size: inherit;
-  font-family: inherit;
+.add-box .icon{
+  height: 78px;
+  width: 78px;
+  color: #88ABFF;
+  font-size: 40px;
+  border-radius: 50%;
+  justify-content: center;
+  border: 2px dashed #88ABFF;
 }
-button.learn-more {
-  width: 12rem;
-  height: auto;
+.add-box p{
+  color: #88ABFF;
+  font-weight: 500;
+  margin-top: 20px;
 }
-button.learn-more .circle {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  position: relative;
+.note{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.note .details{
+  max-height: 165px;
+  overflow-y: auto;
+}
+.note .details::-webkit-scrollbar,
+.popup textarea::-webkit-scrollbar{
+  width: 0;
+}
+.note .details:hover::-webkit-scrollbar,
+.popup textarea:hover::-webkit-scrollbar{
+  width: 5px;
+}
+.note .details:hover::-webkit-scrollbar-track,
+.popup textarea:hover::-webkit-scrollbar-track{
+  background: #f1f1f1;
+  border-radius: 25px;
+}
+.note .details:hover::-webkit-scrollbar-thumb,
+.popup textarea:hover::-webkit-scrollbar-thumb{
+  background: #e6e6e6;
+  border-radius: 25px;
+}
+.note p{
+  font-size: 22px;
+  font-weight: 500;
+}
+.note span{
   display: block;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  /* right: 3rem; */
-  background: #0fadf1;
-  border-radius: 1.625rem;
+  color: #575757;
+  font-size: 16px;
+  margin-top: 5px;
 }
-button.learn-more .circle .icon {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  position: absolute;
-  top: 0;
+.note .bottom-content{
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+.bottom-content span{
+  color: #6D6D6D;
+  font-size: 14px;
+}
+.bottom-content .settings{
+  position: relative;
+}
+.bottom-content .settings i{
+  color: #6D6D6D;
+  cursor: pointer;
+  font-size: 15px;
+}
+.settings .menu{
+  z-index: 1;
   bottom: 0;
-  margin: auto;
-  background: rgb(255, 255, 255);
-}
-button.learn-more .circle .icon.arrow {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  left: 0.625rem;
-  width: 1.125rem;
-  height: 0.125rem;
-  background: none;
-}
-button.learn-more .circle .icon.arrow::before {
+  right: -5px;
+  padding: 5px 0;
+  background: #fff;
   position: absolute;
-  content: "";
-  top: -0.25rem;
-  right: 0.0625rem;
-  width: 0.625rem;
-  height: 0.625rem;
-  border-top: 0.125rem solid rgb(255, 255, 255);
-  border-right: 0.125rem solid #fff;
-  transform: rotate(45deg);
+  border-radius: 4px;
+  transform: scale(0);
+  transform-origin: bottom right;
+  box-shadow: 0 0 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease;
 }
-button.learn-more .button-text {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  position: absolute;
+.settings.show .menu{
+  transform: scale(1);
+}
+.settings .menu li{
+  height: 25px;
+  font-size: 16px;
+  margin-bottom: 2px;
+  padding: 17px 15px;
+  cursor: pointer;
+  box-shadow: none;
+  border-radius: 0;
+  justify-content: flex-start;
+}
+.menu li:last-child{
+  margin-bottom: 0;
+}
+.menu li:hover{
+  background: #f5f5f5;
+}
+.menu li i{
+  padding-right: 8px;
+}
+
+.popup-box{
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 0.5rem 0;
-  margin: 0 0 0 1.5rem;
-  color: #282936;
-  font-weight: 700;
-  line-height: 1.6;
-  text-align: center;
-  text-transform: uppercase;
-}
-button:hover .circle {
+  z-index: 2;
+  height: 100%;
   width: 100%;
-  
+  background: rgba(0,0,0,0.4);
 }
-/* button:hover .circle .icon.arrow {
+.popup-box .popup{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: 100%;
+  max-width: 400px;
+  justify-content: center;
+  transform: translate(-50%, -50%) scale(0.95);
+}
+.popup-box, .popup{
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+.popup-box.show, .popup-box.show .popup{
+  opacity: 1;
+  pointer-events: auto;
+}
+.popup-box.show .popup{
+  transform: translate(-50%, -50%) scale(1);
+}
+.popup .content{
+  border-radius: 5px;
   background: #fff;
-  transform: translate(1rem, 0);
-} */
-button:hover .button-text {
-  color: #fff;
+  width: calc(100% - 15px);
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
 }
-
-
-
-
-/* button style end  */
-
-.main {
-  padding: 2rem;
+.content header{
+  padding: 15px 25px;
+  border-bottom: 1px solid #ccc;
 }
-
-.note {
-  background-color: rgb(220, 230, 240);
-  margin: 30px 20px;
-  height: 200px;
-  width: 400px;
-  border: transparent;
-  overflow-y: scroll;
-  margin-top: 5rem;
-  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+.content header p{
+  font-size: 20px;
+  font-weight: 500;
 }
-
-.note .operation {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0.5rem;
-}
-
-.note .operation button {
-  background-color:transparent;
-  border: transparent;
-  border-radius: 100%;
-  color: #fff;
+.content header i{
+  color: #8b8989;
   cursor: pointer;
-  font-size: 1rem;
-  margin-left: 0.5rem;
+  font-size: 23px;
 }
-
-.note textarea {
+.content form{
+  margin: 15px 25px 35px;
+}
+.content form .row{
+  margin-bottom: 20px;
+}
+form .row label{
+  font-size: 18px;
+  display: block;
+  margin-bottom: 6px;
+}
+form :where(input, textarea){
+  height: 50px;
+  width: 100%;
   outline: none;
-  font-family: inherit;
-  font-size: 1.2rem;
+  font-size: 17px;
+  padding: 0 15px;
+  border-radius: 4px;
+  border: 1px solid #999;
+}
+form :where(input, textarea):focus{
+  box-shadow: 0 2px 4px rgba(0,0,0,0.11);
+}
+form .row textarea{
+  height: 150px;
+  resize: none;
+  padding: 8px 15px;
+}
+form button{
+  width: 100%;
+  height: 50px;
+  color: #fff;
+  outline: none;
   border: none;
-  background-color: transparent;
-  height: 400px;
-  width: 400px;
-  padding: 20px;
+  cursor: pointer;
+  font-size: 17px;
+  border-radius: 4px;
+  background: #6A93F8;
 }
 
-.fa-edit,
-.fa-trash-alt {
-  color: rgb(220, 230, 240);
-  padding: 15px;
-  
-  background-color: #2ecc71;
-  border-radius: 50%;
-}
-
-.fa-trash-alt {
-  background-color: #e74c3c;
-}
-
-.fa-edit:hover {
-  background-color:rgb(220, 230, 240);
-  color: #27ae60;
-  
-  filter: drop-shadow(0px 10px 8px rgb(61, 62, 53));
-}
-
-.fa-trash-alt:hover {
-  background-color: rgb(220, 230, 240);
-  color: #e74c3c;
-  filter: drop-shadow(0px 10px 8px rgb(61, 62, 53));
-}
-
-.hidden {
-  display: none;
+@media (max-width: 660px){
+  .wrapper{
+    margin: 15px;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
+  .popup-box .popup{
+    max-width: calc(100% - 15px);
+  }
+  .bottom-content .settings i{
+    font-size: 17px;
+  }
 }
